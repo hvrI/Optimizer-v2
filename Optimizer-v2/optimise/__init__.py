@@ -166,7 +166,11 @@ class Name():
                     yield (f"{result[0]}", result[-1])
 
         for cmd in AntivirusCMD:
-            yield (cmd, os.system(cmd))
+            result = os.system(cmd + " >nul 2>&1")
+            if result == 0:
+                yield (cmd, "SUCCESS")
+            else:
+                yield (cmd, "FAILED")
 
     
 
@@ -196,7 +200,7 @@ class Name():
                                             break
                                         else:
                                             # (path, ('Start', 'Reg_DWORD', '3'), '2')
-                                            self.latest_untweak_windows_settings.append((path, values[0], str(retrieve_value[1])))
+                                            self.latest_untweak_windows_settings.append((path, (value_name, value_type, value), str(retrieve_value[1])))
                                             yield (f"{path} - {retrieve_value[0]}", str(retrieve_value[1]), value, False)
                                             break
                                     
