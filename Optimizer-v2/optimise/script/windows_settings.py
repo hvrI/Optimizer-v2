@@ -8,7 +8,7 @@
 
 
 
-privacyReg = {
+privacyQolReg = {
     # Disable Advertising ID
     r"HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo" : (
         ("Enabled", "Reg_DWORD", "0"),
@@ -27,10 +27,56 @@ privacyReg = {
         ("SubscribedContent-338389Enabled", "Reg_DWORD", "0"),
         ("SubscribedContent-353698Enabled", "Reg_DWORD", "0"),
         ("SubscribedContent-88000326Enabled", "Reg_DWORD", "0"),
+        # Telementry
+        ("ContentDeliveryAllowed", "Reg_DWORD", "0"),
+        ("OemPreInstalledAppsEnabled", "Reg_DWORD", "0"),
+        ("PreInstalledAppsEnabled", "Reg_DWORD", "0"),
+        ("PreInstalledAppsEverEnabled", "Reg_DWORD", "0"),
+        ("SoftLandingEnabled", "Reg_DWORD", "0"),
+        ("SilentInstalledAppsEnabled", "Reg_DWORD", "0"),
+        ("SystemPaneSuggestionsEnabled", "Reg_DWORD", "0"),
     ),
     # Disable Sync Provider Notifications
     r"HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" : (
         ("ShowSyncProviderNotifications", "Reg_DWORD", "0"),
+        # Disable App Launch Tracking
+        ("Start_TrackProgs", "Reg_DWORD", "0"),
+        # Disable Use Check Boxes to Select Items
+        ("AutoCheckSelect", "Reg_DWORD", "0"),
+        # Hide Recent Items
+        ("Start_TrackDocs", "Reg_DWORD", "0"),
+        # Disable Ballon Tips
+        ("EnableBalloonTips", "Reg_DWORD", "0"),
+        # Open File Explorer to This PC 
+        ("LaunchTo", "Reg_DWORD", "1"),
+        # Configure Explorer to Show All Files with File Extensions
+        ("Hidden", "Reg_DWORD", "1"),
+        ("HideFileExt", "Reg_DWORD", "0"),
+        # Use Compact Mode
+        ("UseCompactMode", "Reg_DWORD", "1"),
+        # Do Not Show Edge Tabs in Alt-Tab
+        ("MultiTaskingAltTabFilter", "Reg_DWORD", "3"),
+        # Disable Aero Shake
+        ("DisallowShaking", "Reg_DWORD", "1"),
+        # Disable Recommendations in the Start Menu
+        ("Start_IrisRecommendations", "Reg_DWORD", "0"),
+        ("Start_AccountNotifications", "Reg_DWORD", "0"),
+        # Disable Microsoft Copilot
+        ("ShowCopilotButton", "Reg_DWORD", "0"),
+        # Disable Show Desktop Peek on Taskbar
+        ("DisablePreviewDesktop", "Reg_DWORD", "1"),
+        # Disable Windows Chat
+        ("TaskbarMn", "Reg_DWORD", "0"),
+        ("TaskbarDa", "Reg_DWORD", "0"),
+        # Disable Task View on Taskbar
+        ("ShowTaskViewButton", "Reg_DWORD", "0"),
+        # Set Taskbar to Align Left
+        ("TaskbarAl", "Reg_DWORD", "0"),
+        # Configure Visual Effects
+        ("ListviewAlphaSelect", "Reg_DWORD", "0"),
+        ("IconsOnly", "Reg_DWORD", "0"),
+        ("TaskbarAnimations", "Reg_DWORD", "0"),
+        ("ListviewShadow", "Reg_DWORD", "0"),
     ),
     # Disable Settings Sync
     r"HKLM\SOFTWARE\Policies\Microsoft\Windows\SettingSync" : (
@@ -49,7 +95,7 @@ privacyReg = {
         ("Enabled", "Reg_DWORD", "0"),
     ),
     r"HKCU\Software\Microsoft\Windows\CurrentVersion\SettingSync\Groups\Language" : (
-        ("Enabled", "REG_DWORD", "0"),
+        ("Enabled", "Reg_DWORD", "0"),
     ),
     r"HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\SettingSync\Groups\Accessibility" : (
         ("Enabled", "Reg_DWORD", "0"),
@@ -74,7 +120,7 @@ privacyReg = {
     ),
     # Disable Biometric
     r"HKLM\SOFTWARE\Policies\Microsoft\Biometrics" : (
-        ("Enabled", "REG_DWORD", "0"),
+        ("Enabled", "Reg_DWORD", "0"),
     ),
     # Configure App Permissions
     r"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\appDiagnostics" : (
@@ -105,11 +151,18 @@ privacyReg = {
     ),
     r"HKLM\SOFTWARE\Policies\Microsoft\Windows\Explorer" : (
         ("DisableNotificationCenter", "Reg_DWORD", "1"),
+        # Configure Start Menu
+        ("ShowOrHideMostUsedApps", "Reg_DWORD", "2"),
+        ("HideRecentlyAddedApps", "Reg_DWORD", "1"),
+        ("HideRecommendedPersonalizedSites", "Reg_DWORD", "1"),
     ),
     r"HKCU\Software\Policies\Microsoft\Windows\Explorer" : (
         ("DisableNotificationCenter", "Reg_DWORD", "1"),
+        # Blocks Anonymous Enumeration of SAM Accounts
+        ("DisableSearchBoxSuggestions", "Reg_DWORD", "1"),
+        # Hide Recent Items
+        ("NoRemoteDestinations", "Reg_DWORD", "1"),
     ),
-    # ------
     r"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\activity" : (
         ("Value", "Reg_SZ", "Deny"),
     ),
@@ -160,10 +213,11 @@ privacyReg = {
     # Disable Activity Feed
     r"HKLM\SOFTWARE\Policies\Microsoft\Windows\System" : (
         ("EnableActivityFeed", "Reg_DWORD", "0"),
-    ),
-    # Disable App Launch Tracking
-    r"HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" : (
-        ("Start_TrackProgs", "Reg_DWORD", "0"),
+        # Disable Resultant Set of Policy (RSoP) Logging
+        ("RSoPLogging", "Reg_DWORD", "0"),
+        # Disallow Upload and Publish of User Activities
+        ("UploadUserActivities", "Reg_DWORD", "0"),
+        ("PublishUserActivities", "Reg_DWORD", "0"),
     ),
     # Disable Device Health Attestation Monitoring and Reporting
     r"HKLM\SOFTWARE\Policies\Microsoft\DeviceHealthAttestationService" : (
@@ -171,10 +225,10 @@ privacyReg = {
     ),
     # Disable Experimentation
     r"HKLM\SOFTWARE\Microsoft\PolicyManager\default\System\AllowExperimentation" : (
-        ("Value", "Reg_DWORD", "0"),
+        ("value", "Reg_DWORD", "0"),
     ),
     r"HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\System" : (
-        ("AllowExperimentation", "REG_DWORD", "0"),
+        ("AllowExperimentation", "Reg_DWORD", "0"),
     ),
     # Disable People
     r"HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People" : (
@@ -204,6 +258,10 @@ privacyReg = {
     # Disable ConsumerFeatures
     r"HKLM\SOFTWARE\Policies\Microsoft\Windows\CloudContent" : (
         ("DisableWindowsConsumerFeatures", "Reg_DWORD", "1"),
+        # Disable Cloud Optimized Content on Taskbar
+        ("DisableCloudOptimizedContent", "Reg_DWORD", "1"),
+        # Disable Tips
+        ("DisableSoftLanding", "Reg_DWORD", "1"),
     ),
     # Disable Program Compatibility Assistant (PCA)
     r"HKLM\SOFTWARE\Policies\Microsoft\Windows\AppCompat" : (
@@ -222,10 +280,6 @@ privacyReg = {
     r"HKLM\SOFTWARE\Policies\Microsoft\Windows\OOBE" : (
         ("DisablePrivacyExperience", "Reg_DWORD", "1"),
     ),
-    # Disable Resultant Set of Policy (RSoP) Logging
-    r"HKLM\SOFTWARE\Policies\Microsoft\Windows\System" : (
-        ("RSoPLogging", "Reg_DWORD", "0"),
-    ),
     # Disable Automatic Updates Of Speech Data
     r"HKLM\SOFTWARE\Policies\Microsoft\Speech" : (
         ("AllowSpeechModelUpdate", "Reg_DWORD", "0"),
@@ -236,10 +290,31 @@ privacyReg = {
     ),
     r"HKCU\SOFTWARE\Policies\Microsoft\Windows\CloudContent" : (
         ("DisableTailoredExperiencesWithDiagnosticData", "Reg_DWORD", "1"),
+        # Disable Windows Spotlight
+        ("DisableWindowsSpotlightFeatures", "Reg_DWORD", "1"),
+        ("DisableWindowsSpotlightWindowsWelcomeExperience", "Reg_DWORD", "1"),
+        ("DisableWindowsSpotlightOnActionCenter", "Reg_DWORD", "1"),
+        ("DisableWindowsSpotlightOnSettings", "Reg_DWORD", "1"),
+        ("DisableThirdPartySuggestions", "Reg_DWORD", "1"),
     ),
     # Disable Most Frequently Used Applications
     r"HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" : (
         ("NoInstrumentation", "Reg_DWORD", "1"),
+        # Disable Searching for Invalid Shortcuts
+        ("NoResolveSearch", "Reg_DWORD", "1"),
+        ("NoResolveTrack", "Reg_DWORD", "1"),
+        # Hide Recent Items
+        ("ClearRecentDocsOnExit", "Reg_DWORD", "1"),
+        ("NoRecentDocsHistory", "Reg_DWORD", "1"),
+        # Better Explorer
+        ("NoRun", "Reg_DWORD", "0"),
+        ("NoControlPanel", "Reg_DWORD", "0"),
+        ("NoFolderOptions", "Reg_DWORD", "0"),
+        ("NoViewContextMenu", "Reg_DWORD", "0"),
+        ("NoInternetOpenWith", "Reg_DWORD", "1"),
+        ("LinkResolveIgnoreLinkInfo", "Reg_DWORD", "1"),
+        # Diasble Low Disk Space Checks
+        ("NoLowDiskSpaceChecks", "Reg_DWORD", "1"),
     ),
     # Disable Website Access to Language List
     r"HKCU\Control Panel\International\User Profile" : (
@@ -251,6 +326,7 @@ privacyReg = {
     ),
     r"HKLM\SOFTWARE\Policies\Microsoft\PCHealth\ErrorReporting" : (
         ("DoReport", "Reg_DWORD", "0"),
+        ("ShowUI", "Reg_DWORD", "0"),
     ),
     r"HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting" : (
         ("Disabled", "Reg_DWORD", "1"),
@@ -260,9 +336,6 @@ privacyReg = {
         ("DontShowUI", "Reg_DWORD", "1"),
         ("LoggingDisabled", "Reg_DWORD", "1"),
         ("DontSendAdditionalData", "Reg_DWORD", "1"),
-    ),
-    r"HKLM\SOFTWARE\Policies\Microsoft\PCHealth\ErrorReporting" : (
-        ("ShowUI", "Reg_DWORD", "0"),
     ),
     r"HKLM\Software\Microsoft\Windows\CurrentVersion\Component Based Servicing" : (
         ("DisableWerReporting", "Reg_DWORD", "1"),
@@ -274,11 +347,8 @@ privacyReg = {
     # Disallow Users to Be Non-local
     r"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" : (
         ("NoConnectedUser", "Reg_DWORD", "1"),
-    ),
-    # Disallow Upload and Publish of User Activities
-    r"HKLM\SOFTWARE\Policies\Microsoft\Windows\System" : (
-        ("UploadUserActivities", "Reg_DWORD", "0"),
-        ("PublishUserActivities", "Reg_DWORD", "0"),
+        # Disable UAC Secure Desktop
+        ("PromptOnSecureDesktop", "Reg_DWORD", "0"),
     ),
     # Configure Search on the Taskbar
     r"HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" : (
@@ -298,13 +368,9 @@ privacyReg = {
         ("AllowSearchToUseLocation", "Reg_DWORD", "0"),
         ("EnableDynamicContentInWSB", "Reg_DWORD", "0"),
     ),
-    # Blocks Anonymous Enumeration of SAM Accounts
-    r"HKCU\SOFTWARE\Policies\Microsoft\Windows\Explorer" : (
-        ("DisableSearchBoxSuggestions", "Reg_DWORD", "1"),
-    ),
     # Disable Remote Assistance
     r"HKLM\SYSTEM\CurrentControlSet\Control\Lsa" : (
-        ("RestrictAnonymousSAM", "Reg_DWORD", "1"),
+        ("restrictanonymoussam", "Reg_DWORD", "1"),
     ),
     r"HKLM\SYSTEM\CurrentControlSet\Control\Remote Assistance" : (
         ("fAllowFullControl", "Reg_DWORD", "0"),
@@ -324,10 +390,10 @@ privacyReg = {
     # Disable Office Telemetry
     r"HKCU\Software\Policies\Microsoft\office\16.0\common" : (
         ("sendcustomerdata", "Reg_DWORD", "0"),
-        ("qmenable", "Reg_DWORD", "0"),
+        ("QMEnable", "Reg_DWORD", "0"),
     ),
     r"HKCU\Software\Policies\Microsoft\office\common\clienttelemetry" : (
-        ("sendtelemetry", "Reg_DWORD", "3"),
+        ("SendTelemetry", "Reg_DWORD", "3"),
     ),
     # Disable Key Management System Telemetry
     r"HKLM\SOFTWARE\Policies\Microsoft\Windows NT\CurrentVersion\Software Protection Platform" : (
@@ -341,7 +407,7 @@ privacyReg = {
         ("CEIPEnable", "Reg_DWORD", "0"),
     ),
     r"HKLM\SOFTWARE\Microsoft\SQMClient\Windows" : (
-        ("CEIPEnable", "REG_DWORD", "0"),
+        ("CEIPEnable", "Reg_DWORD", "0"),
     ),
     # Disable Diagnostic Tracing
     r"HKLM\SYSTEM\CurrentControlSet\Control\Diagnostics\Performance" : (
@@ -358,12 +424,12 @@ privacyReg = {
         ("AutoUpdateEnabled", "Reg_DWORD", "0"),
     ),
     r"HKLM\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors" : (
-        ("DisableWindowsLocationProvider", "REG_DWORD", "1"),
-        ("DisableLocationScripting", "REG_DWORD", "1")
+        ("DisableWindowsLocationProvider", "Reg_DWORD", "1"),
+        ("DisableLocationScripting", "Reg_DWORD", "1")
     ),
     # Disable Input Telemetry
     r"HKLM\SOFTWARE\Microsoft\Speech_OneCore\Preferences" : (
-        ("ModelDownloadAllowed", "REG_DWORD", "0"),
+        ("ModelDownloadAllowed", "Reg_DWORD", "0"),
     ),
     r"HKCU\SOFTWARE\Microsoft\InputPersonalization" : (
         ("RestrictImplicitInkCollection", "Reg_DWORD", "1"),
@@ -391,7 +457,7 @@ privacyReg = {
         ("Enabled", "Reg_DWORD", "0"),
     ),
     r"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Device Metadata" : (
-        ("PreventDeviceMetadataFromNetwork", "REG_DWORD", "1"),
+        ("PreventDeviceMetadataFromNetwork", "Reg_DWORD", "1"),
     ),
     # Disallow Telemetry and Data Collection
     r"HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Diagnostics\DiagTrack" : (
@@ -400,10 +466,14 @@ privacyReg = {
     r"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" : (
         ("AllowTelemetry", "Reg_DWORD", "0"),
         ("MaxTelemetryAllowed", "Reg_DWORD", "0"),
+        # Disable Windows Feedback
+        ("DoNotShowFeedbackNotifications", "Reg_DWORD", "1"),
     ),
     r"HKLM\Software\Policies\Microsoft\Windows\DataCollection" : (
         ("AllowTelemetry", "Reg_DWORD", "0"),
         ("AllowDeviceNameInTelemetry", "Reg_DWORD", "0"),
+        # Disable Windows Feedback
+        ("DoNotShowFeedbackNotifications", "Reg_DWORD", "1"),
     ),
     r"HKLM\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Policies\DataCollection" : (
         ("AllowTelemetry", "Reg_DWORD", "0"),
@@ -415,26 +485,8 @@ privacyReg = {
     r"HKLM\SYSTEM\CurrentControlSet\Control\WMI\Autologger\Diagtrack-Listener" : (
         ("Start", "Reg_DWORD", "0"),
     ),
-    r"HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" : (
-        ("ContentDeliveryAllowed", "Reg_DWORD", "0"),
-        ("OemPreInstalledAppsEnabled", "Reg_DWORD", "0"),
-        ("PreInstalledAppsEnabled", "Reg_DWORD", "0"),
-        ("PreInstalledAppsEverEnabled", "Reg_DWORD", "0"),
-        ("SoftLandingEnabled", "REG_DWORD", "0"),
-        ("SilentInstalledAppsEnabled", "Reg_DWORD", "0"),
-        ("SystemPaneSuggestionsEnabled", "Reg_DWORD", "0"),
-    ),
-    r"HKLM\SYSTEM\CurrentControlSet\Control\WMI\Autologger\Diagtrack-Listener" : (
-        ("Start", "Reg_DWORD", "0"),
-    ),
-    r"HKLM\SYSTEM\CurrentControlSet\Control\WMI\Autologger\Diagtrack-Listener" : (
-        ("Start", "Reg_DWORD", "0"),
-    ),
-    r"HKLM\SYSTEM\CurrentControlSet\Control\WMI\Autologger\Diagtrack-Listener" : (
-        ("Start", "Reg_DWORD", "0"),
-    ),
     r"HKLM\SYSTEM\CurrentControlSet\Control\WMI\AutoLogger\AutoLogger-Diagtrack-Listener" : (
-        ("Start", "REG_DWORD", "0"),
+        ("Start", "Reg_DWORD", "0"),
     ),
     # Disable MSRT telemetry
     r"HKLM\SOFTWARE\Policies\Microsoft\MRT" : (
@@ -442,7 +494,7 @@ privacyReg = {
     ),
     r"HKLM\SOFTWARE\Microsoft\RemovalTools\MpGears" : (
         ("HeartbeatTrackingIndex", "Reg_DWORD", "0"),
-        ("SpyNetReportingLocation", "Reg_MULTI_SZ", ""),
+        ("SpyNetReportingLocation", "Reg_MULTI_SZ", " "),
     ),
     # Disable Office Telementry
     r"HKCU\Software\Policies\microsoft\office\16.0\osm\preventedapplications" : (
@@ -509,9 +561,6 @@ privacyReg = {
     r"HKCU\SOFTWARE\Microsoft\Office\16.0\Common\Feedback" : (
         ("Enabled", "Reg_DWORD", "0"),
     ),
-}
-
-qolReg = {
     # Disable 'Always Read and Scan This Section'
     r"HKCU\SOFTWARE\Microsoft\Ease of Access" : (
         ("selfscan", "Reg_DWORD", "0"),
@@ -551,14 +600,12 @@ qolReg = {
     ),
     # Remove 'Cast to device' from Context Menu
     r"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked" : (
-        ("{7AD84985-87B4-4a16-BE58-8B72A5B390F7}", "Reg_SZ", ""),
-    ),
-    # Remove 'Troubleshooting Compatibility' from Context Menu
-    r"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked" : (
-        ("{1d27f844-3a1f-4410-85ac-14651078412d}", "Reg_SZ", ""),
+        ("{7AD84985-87B4-4a16-BE58-8B72A5B390F7}", "Reg_SZ", " "),
+        # Remove 'Troubleshooting Compatibility' from Context Menu
+        ("{1d27f844-3a1f-4410-85ac-14651078412d}", "Reg_SZ", " "),
     ),
     r"HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked" : (
-        ("{1d27f844-3a1f-4410-85ac-14651078412d}", "Reg_SZ", ""),
+        ("{1d27f844-3a1f-4410-85ac-14651078412d}", "Reg_SZ", " "),
     ),
     # Show More Details by Default on Transfers
     r"HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\OperationStatusManager" : (
@@ -566,17 +613,13 @@ qolReg = {
     ),
     # Revert to Classic Search
     r"HKLM\SOFTWARE\Classes\CLSID\{1d64637d-31e9-4b06-9124-e83fb178ac6e}\TreatAs" : (
-        ("", "Reg_SZ", "{64bc32b5-4eec-4de7-972d-bd8bd0324537}"),
+        (" ", "Reg_SZ", "{64bc32b5-4eec-4de7-972d-bd8bd0324537}"),
     ),
     r"HKLM\SOFTWARE\Classes\WOW6432Node\CLSID\{1d64637d-31e9-4b06-9124-e83fb178ac6e}\TreatAs" : (
-        ("", "Reg_SZ", "{64bc32b5-4eec-4de7-972d-bd8bd0324537}"),
+        (" ", "Reg_SZ", "{64bc32b5-4eec-4de7-972d-bd8bd0324537}"),
     ),
     r"HKLM\SOFTWARE\WOW6432Node\Classes\CLSID\{1d64637d-31e9-4b06-9124-e83fb178ac6e}\TreatAs" : (
-        ("", "Reg_SZ", "{64bc32b5-4eec-4de7-972d-bd8bd0324537}"),
-    ),
-    # Disable Use Check Boxes to Select Items
-    r"HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" : (
-        ("AutoCheckSelect", "Reg_DWORD", "0"),
+        (" ", "Reg_SZ", "{64bc32b5-4eec-4de7-972d-bd8bd0324537}"),
     ),
     # Hide Folders from This PC
     r"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FolderDescriptions\{31C0DD25-9439-4F12-BF41-7FF4EDA38722}\PropertyBag" : (
@@ -621,14 +664,14 @@ qolReg = {
     r"HKLM\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\FolderDescriptions\{B4BFCC3A-DB2C-424C-B029-7FE99A87C641}\PropertyBag" : (
         ("ThisPCPolicy", "Reg_SZ", "Hide"),
     ),
-    # Disable Searching for Invalid Shortcuts
-    r"HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" : (
-        ("NoResolveSearch", "Reg_DWORD", "1"),
-        ("NoResolveTrack", "Reg_DWORD", "1"),
-    ),
     # Don't Show Office Files
     r"HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer" : (
         ("ShowCloudFilesInQuickAccess", "Reg_DWORD", "0"),
+        # Always Show the Full Context Menu On Items
+        ("MultipleInvokePromptMinimum", "Reg_DWORD", "100"),
+        # Hide Recent Items
+        ("ShowFrequent", "Reg_DWORD", "0"),
+        ("ShowRecent", "Reg_DWORD", "0"),
     ),
     # Enable Long Paths
     r"HKLM\SYSTEM\CurrentControlSet\Control\FileSystem" : (
@@ -642,48 +685,33 @@ qolReg = {
     r"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\AlwaysUnloadDLL" : (
         ("Default", "Reg_DWORD", "1"),
     ),
-    # Always Show the Full Context Menu On Items
-    r"HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" : (
-        ("MultipleInvokePromptMinimum", "Reg_DWORD", "100"),
-    ),
-    # Hide Recent Items
-    r"HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" : (
-        ("ShowFrequent", "Reg_DWORD", "0"),
-        ("ShowRecent", "Reg_DWORD", "0"),
-    ),
-    r"HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" : (
-        ("Start_TrackDocs", "Reg_DWORD", "0"),
-    ),
-    r"HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" : (
-        ("ClearRecentDocsOnExit", "Reg_DWORD", "1"),
-        ("NoRecentDocsHistory", "Reg_DWORD", "1"),
-    ),
-    r"HKCU\SOFTWARE\Policies\Microsoft\Windows\Explorer" : (
-        ("NoRemoteDestinations", "Reg_DWORD", "1"),
-    ),
-    # Better Explorer
-    r"HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" : (
-        ("NoRun", "Reg_DWORD", "0"),
-        ("NoControlPanel", "Reg_DWORD", "0"),
-        ("NoFolderOptions", "Reg_DWORD", "0"),
-        ("NoViewContextMenu", "Reg_DWORD", "0"),
-        ("NoInternetOpenWith", "Reg_DWORD", "1"),
-        ("LinkResolveIgnoreLinkInfo", "Reg_DWORD", "1")
-    ),
-    r"HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" : (
-        ("EnableBalloonTips", "Reg_DWORD", "0"),
-    ),
     # Minimize Mouse Hover Time for Item Info
     r"HKCU\Control Panel\Desktop" : (
         ("MouseHoverTime", "Reg_SZ", "20"),
+        # Disable Menu Hover Delay
+        ("MenuShowDelay", "Reg_SZ", "0"),
+        # Decrease Shutdown Time
+        ("HungAppTimeout", "Reg_SZ", "1000"),
+        ("WaitToKillAppTimeOut", "Reg_SZ", "2000"),
+        ("LowLevelHooksTimeout", "Reg_SZ", "1000"),
+        ("WaitToKillServiceTimeout", "Reg_SZ", "1000"),
+        ("ForegroundLockTimeout", "Reg_SZ", "150000"),
+        # Force Close Applications On Session End
+        ("AutoEndTasks", "Reg_SZ", "1"),
+        # Disable Wallpaper Compression
+        ("JPEGImportQuality", "Reg_DWORD", "100"),
     ),
     # Disable Internet File Assocation Service
     r"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" : (
         ("NoInternetOpenWith", "Reg_DWORD", "1"),
-    ),
-    # Open File Explorer to This PC 
-    r"HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" : (
-        ("LaunchTo", "Reg_DWORD", "1"),
+        # Hide 'Meet Now' on Taskbar
+        ("HideSCAMeetNow", "Reg_DWORD", "1"),
+        # Configure Start Menu
+        ("NoStartMenuMFUprogramsList", "Reg_DWORD", "1"),
+        # Disable Settings Tips
+        ("AllowOnlineTips", "Reg_DWORD", "0"),
+        # Hides Settings pages that are either broken or unused
+        ("SettingsPageVisibility", "Reg_SZ", "hide:recovery;maps;maps-downloadmaps;privacy;privacy-feedback;privacy-activityhistory;search-permissions;privacy-general;sync;mobile-devices;mobile-devices-addphone;workplace;family-group;deviceusage;home"),
     ),
     # Driver Searching
     r"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DriverSearching" : (
@@ -691,52 +719,23 @@ qolReg = {
     ),
     # Remove Shortcut Text
     r"HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\NamingTemplates" : (
-        ("ShortcutNameTemplate", "Reg_SZ", r"\"%s.lnk\""),
-    ),
-    # Configure Explorer to Show All Files with File Extensions
-    r"HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" : (
-        ("Hidden", "Reg_DWORD", "1"),
-        ("HideFileExt", "Reg_DWORD", "0"),
-    ),
-    # Use Compact Mode
-    r"HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" : (
-        ("UseCompactMode", "Reg_DWORD", "1"),
-    ),
-    # Disable UAC Secure Desktop
-    r"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" : (
-        ("PromptOnSecureDesktop", "Reg_DWORD", "0"),
-    ),
-    # Do Not Show Edge Tabs in Alt-Tab
-    r"HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" : (
-        ("MultiTaskingAltTabFilter", "Reg_DWORD", "3"),
+        ("ShortcutNameTemplate", "Reg_SZ", r'"%s.lnk"'),
     ),
     # Disable AutoRun
     r"HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers" : (
         ("DisableAutoplay", "Reg_DWORD", "1"),
     ),
     r"HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers\EventHandlersDefaultSelection\CameraAlternate" : (
-        ("MSTakeNoAction", "Reg_NONE", ""),
+        ("MSTakeNoAction", "Reg_NONE", " "),
     ),
     r"HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers\EventHandlersDefaultSelection\StorageOnArrival" : (
-        ("MSTakeNoAction", "Reg_NONE", ""),
+        ("MSTakeNoAction", "Reg_NONE", " "),
     ),
     r"HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers\UserChosenExecuteHandlers\CameraAlternate\ShowPicturesOnArrival" : (
-        ("MSTakeNoAction", "Reg_NONE", ""),
+        ("MSTakeNoAction", "Reg_NONE", " "),
     ),
     r"HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers\UserChosenExecuteHandlers\StorageOnArrival" : (
-        ("MSTakeNoAction", "Reg_NONE", ""),
-    ),
-    #  Disable Aero Shake
-    r"HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" : (
-        ("DisallowShaking", "Reg_DWORD", "1"),
-    ),
-    # Diasble Low Disk Space Checks
-    r"HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" : (
-        ("NoLowDiskSpaceChecks", "Reg_DWORD", "1"),
-    ),
-    # Disable Menu Hover Delay
-    r"HKCU\Control Panel\Desktop" : (
-        ("MenuShowDelay", "Reg_SZ", "0"),
+        ("MSTakeNoAction", "Reg_NONE", " "),
     ),
     # Disable Shared Experiences
     r"HKCU\Software\Microsoft\Windows\CurrentVersion\CDP\SettingsPage" : (
@@ -746,26 +745,13 @@ qolReg = {
         ("NearShareChannelUserAuthzPolicy", "Reg_DWORD", "0"),
         ("CdpSessionUserAuthzPolicy", "Reg_DWORD", "1"),
     ),
-    # Disable Recommendations in the Start Menu
-    r"HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" : (
-        ("Start_IrisRecommendations", "Reg_DWORD", "0"),
-        ("Start_AccountNotifications", "Reg_DWORD", "0"),
-    ),
     # Set Unpinned Control Center Items
     r"HKCU\Control Panel\Quick Actions\Control Center\Unpinned" : (
-        ("Microsoft.QuickAction.Cast", "Reg_NONE", ""),
-        ("Microsoft.QuickAction.NearShare", "Reg_NONE", ""),
+        ("Microsoft.QuickAction.Cast", "Reg_NONE", " "),
+        ("Microsoft.QuickAction.NearShare", "Reg_NONE", " "),
     ),
     r"HKCU\Control Panel\Quick Actions\Control Center\QuickActionsStateCapture" : (
         ("Toggles", "Reg_SZ", "Toggles,Microsoft.QuickAction.BlueLightReduction:false,Microsoft.QuickAction.Accessibility:false,Microsoft.QuickAction.ProjectL2:false"),
-    ),
-    # Decrease Shutdown Time
-    r"HKCU\Control Panel\Desktop" : (
-        ("HungAppTimeout", "Reg_SZ", "1000"),
-        ("WaitToKillAppTimeOut", "Reg_SZ", "2000"),
-        ("LowLevelHooksTimeout", "Reg_SZ", "1000"),
-        ("WaitToKillServiceTimeout", "Reg_SZ", "1000"),
-        ("ForegroundLockTimeout", "Reg_SZ", "150000")
     ),
     r"HKLM\SYSTEM\CurrentControlSet\Control" : (
         ("WaitToKillServiceTimeout", "Reg_SZ", "1000"),
@@ -773,10 +759,6 @@ qolReg = {
     # Disable Startup Delay
     r"HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Serialize" : (
         ("StartupDelayInMSec", "Reg_DWORD", "0"),
-    ),
-    # Force Close Applications On Session End
-    r"HKCU\Control Panel\Desktop" : (
-        ("AutoEndTasks", "Reg_SZ", "1"),
     ),
     # Clear Page File at Shutdown
     r"HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" : (
@@ -796,23 +778,12 @@ qolReg = {
     r"HKLM\SYSTEM\CurrentControlSet\Control\Session Manager" : (
         ("DisableWpbtExecution", "Reg_DWORD", "1"),
     ),
-    # Disable Cloud Optimized Content on Taskbar
-    r"HKLM\SOFTWARE\Policies\Microsoft\Windows\CloudContent" : (
-        ("DisableCloudOptimizedContent", "Reg_DWORD", "1"),
-    ),
     # Disable Microsoft Copilot
     r"HKLM\Software\Policies\Microsoft\Windows\WindowsCopilot" : (
         ("TurnOffWindowsCopilot", "Reg_DWORD", "1"),
     ),
     r"HKCU\Software\Policies\Microsoft\Windows\WindowsCopilot" : (
         ("TurnOffWindowsCopilot", "Reg_DWORD", "1"),
-    ),
-    r"HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" : (
-        ("ShowCopilotButton", "Reg_DWORD", "0"),
-    ),
-    # Disable Show Desktop Peek on Taskbar
-    r"HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" : (
-        ("DisablePreviewDesktop", "Reg_DWORD", "1"),
     ),
     # Disable News and Interests
     r"HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Feeds" : (
@@ -833,25 +804,9 @@ qolReg = {
     r"HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Chat" : (
         ("ChatIcon", "Reg_DWORD", "3"),
     ),
-    r"HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" : (
-        ("TaskbarMn", "Reg_DWORD", "0"),
-        ("TaskbarDa", "Reg_DWORD", "0"),
-    ),
     # Add 'End task' to the taskbar
     r"HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\TaskbarDeveloperSettings" : (
         ("TaskbarEndTask", "Reg_DWORD", "1"),
-    ),
-    # Hide 'Meet Now' on Taskbar
-    r"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" : (
-        ("HideSCAMeetNow", "Reg_DWORD", "1"),
-    ),
-    # Disable Task View on Taskbar
-    r"HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" : (
-        ("ShowTaskViewButton", "Reg_DWORD", "0"),
-    ),
-    # Set Taskbar to Align Left
-    r"HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" : (
-        ("TaskbarAl", "Reg_DWORD", "0"),
     ),
     # Disable Delivery Optimization
     r"HKLM\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization" : (
@@ -861,16 +816,18 @@ qolReg = {
         ("DODownloadMode", "Reg_DWORD", "0"),
     ),
     r"HKCU\Software\Microsoft\Windows\CurrentVersion\DeliveryOptimization" : (
-        ("SystemSettingsDownloadMode", "REG_DWORD", "0"),
+        ("SystemSettingsDownloadMode", "Reg_DWORD", "0"),
     ),
     # Disable Feature Updates
     r"HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" : (
         ("TargetReleaseVersion", "Reg_DWORD", "1"),
-    ),
-    # Restrict Windows Insider
-    r"HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" : (
+        # Restrict Windows Insider
         ("ManagePreviewBuilds", "Reg_DWORD", "1"),
         ("ManagePreviewBuildsPolicyValue", "Reg_DWORD", "0"),
+        # Windows Update
+        ("DeferUpgrade", "Reg_DWORD", "1"),
+        ("DeferUpgradePeriod", "Reg_DWORD", "1"),
+        ("DeferUpdatePeriod", "Reg_DWORD", "0")
     ),
     r"HKLM\SOFTWARE\Policies\Microsoft\Windows\PreviewBuilds" : (
         ("AllowBuildPreview", "Reg_DWORD", "0"),
@@ -880,12 +837,6 @@ qolReg = {
     r"HKLM\SOFTWARE\Microsoft\WindowsSelfHost\UI\Visibility" : (
         ("HideInsiderPage", "Reg_DWORD", "1"),
     ),
-    # Windows Update
-    r"HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" : (
-        ("DeferUpgrade", "REG_DWORD", "1"),
-        ("DeferUpgradePeriod", "REG_DWORD", "1"),
-        ("DeferUpdatePeriod", "REG_DWORD", "0")
-    ),
     # Disable WU Nagging
     r"HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" : (
         ("NoAUAsDefaultShutdownOption", "Reg_DWORD", "1"),
@@ -894,22 +845,9 @@ qolReg = {
     r"HKLM\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings" : (
         ("HideMCTLink", "Reg_DWORD", "1"),
     ),
-    # Disable Wallpaper Compression
-    r"HKCU\Control Panel\Desktop" : (
-        ("JPEGImportQuality", "Reg_DWORD", "100"),
-    ),
     # Configure PowerShell
     r"HKLM\SOFTWARE\Microsoft\PowerShell\1\ShellIds\Microsoft.PowerShell" : (
         ("ExecutionPolicy", "Reg_SZ", "Unrestricted"),
-    ),
-    # Configure Start Menu
-    r"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" : (
-        ("NoStartMenuMFUprogramsList", "Reg_DWORD", "1"),
-    ),
-    r"HKLM\SOFTWARE\Policies\Microsoft\Windows\Explorer" : (
-        ("ShowOrHideMostUsedApps", "Reg_DWORD", "2"),
-        ("HideRecentlyAddedApps", "Reg_DWORD", "1"),
-        ("HideRecommendedPersonalizedSites", "Reg_DWORD", "1"),
     ),
     # Disable Dynamic Lighting
     r"HKCU\Software\Microsoft\Lighting" : (
@@ -932,9 +870,6 @@ qolReg = {
     r"HKLM\SOFTWARE\Microsoft\PolicyManager\default\Settings\AllowOnlineTips" : (
         ("value", "Reg_DWORD", "0"),
     ),
-    r"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" : (
-        ("AllowOnlineTips", "Reg_DWORD", "0"),
-    ),
     # Disable Spell Checking
     r"HKCU\SOFTWARE\Microsoft\TabletTip\1.7" : (
         ("EnableAutocorrection", "Reg_DWORD", "0"),
@@ -942,6 +877,9 @@ qolReg = {
         ("EnablePredictionSpaceInsertion", "Reg_DWORD", "0"),
         ("EnableSpellchecking", "Reg_DWORD", "0"),
         ("EnableTextPrediction", "Reg_DWORD", "0"),
+        # Disable Unnecessary Touch Keyboard Settings
+        ("EnableAutoShiftEngage", "Reg_DWORD", "0"),
+        ("EnableKeyAudioFeedback", "Reg_DWORD", "0"),
     ),
     # Disable Automatic Updates for Apps in Store
     r"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsStore\WindowsUpdate" : (
@@ -950,15 +888,6 @@ qolReg = {
     # Disable Auto Maintenance
     r"HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\Maintenance" : (
         ("MaintenanceDisabled", "Reg_DWORD", "1"),
-    ),
-    # Disable Tips
-    r"HKLM\SOFTWARE\Policies\Microsoft\Windows\CloudContent" : (
-        ("DisableSoftLanding", "Reg_DWORD", "1"),
-    ),
-    # Disable Unnecessary Touch Keyboard Settings
-    r"HKCU\SOFTWARE\Microsoft\TabletTip\1.7" : (
-        ("EnableAutoShiftEngage", "Reg_DWORD", "0"),
-        ("EnableKeyAudioFeedback", "Reg_DWORD", "0"),
     ),
     # Disable Touch Visual Feedback
     r"HKCU\Control Panel\Cursors" : (
@@ -972,21 +901,7 @@ qolReg = {
     # Disable Windows Feedback
     r"HKCU\SOFTWARE\Microsoft\Siuf\Rules" : (
         ("NumberOfSIUFInPeriod", "Reg_DWORD", "0"),
-        ("PeriodInNanoSeconds", "REG_DWORD", "0"),
-    ),
-    r"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" : (
-        ("DoNotShowFeedbackNotifications", "Reg_DWORD", "1"),
-    ),
-    r"HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" : (
-        ("DoNotShowFeedbackNotifications", "Reg_DWORD", "1"),
-    ),
-    # Disable Windows Spotlight
-    r"HKCU\SOFTWARE\Policies\Microsoft\Windows\CloudContent" : (
-        ("DisableWindowsSpotlightFeatures", "Reg_DWORD", "1"),
-        ("DisableWindowsSpotlightWindowsWelcomeExperience", "Reg_DWORD", "1"),
-        ("DisableWindowsSpotlightOnActionCenter", "Reg_DWORD", "1"),
-        ("DisableWindowsSpotlightOnSettings", "Reg_DWORD", "1"),
-        ("DisableThirdPartySuggestions", "Reg_DWORD", "1"),
+        ("PeriodInNanoSeconds", "Reg_DWORD", "0"),
     ),
     r"HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanelt" : (
         ("{2cc5ca98-6485-489a-920e-b3e88a6ccce3}", "Reg_DWORD", "1"),
@@ -1000,24 +915,8 @@ qolReg = {
         ("ShowDisconnectedDevices", "Reg_DWORD", "0"),
         ("ShowHiddenDevices", "Reg_DWORD", "0"),
     ),
-    # Hides Settings pages that are either broken or unused
-    r"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" : (
-        ("SettingsPageVisibility", "Reg_SZ", "hide:recovery;maps;maps-downloadmaps;privacy;privacy-feedback;privacy-activityhistory;search-permissions;privacy-general;sync;mobile-devices;mobile-devices-addphone;workplace;family-group;deviceusage;home"),
-    ),
-    # Configure Visual Effects
-    r"HKCU\Control Panel\Desktop" : (
-        ("FontSmoothing", "Reg_SZ", "2"),
-        ("UserPreferencesMask", "Reg_BINARY", "9012038010000000"),
-        ("DragFullWindows", "Reg_SZ", "1"),
-    ),
     r"HKCU\Control Panel\Desktop\WindowMetrics" : (
         ("MinAnimate", "Reg_SZ", "0"),
-    ),
-    r"HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" : (
-        ("ListviewAlphaSelect", "Reg_DWORD", "0"),
-        ("IconsOnly", "Reg_DWORD", "0"),
-        ("TaskbarAnimations", "Reg_DWORD", "0"),
-        ("ListviewShadow", "Reg_DWORD", "0"),
     ),
     r"HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects" : (
         ("VisualFXSetting", "Reg_DWORD", "3"),
