@@ -91,9 +91,9 @@ AntivirusReg = {
         ("UILockdown", "Reg_DWORD", "1"),
     ),
     r"HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet" : (
-        ("SpyNetReporting", "REG_DWORD", "0"),
-        ("SubmitSamplesConsent", "REG_DWORD", "2"),
-        ("DisableBlockAtFirstSeen", "REG_DWORD", "1")
+        ("SpyNetReporting", "Reg_DWORD", "0"),
+        ("SubmitSamplesConsent", "Reg_DWORD", "2"),
+        ("DisableBlockAtFirstSeen", "Reg_DWORD", "1")
     ),
     r"HKLM\Software\Policies\Microsoft\Windows Defender\MpEngine" : (
         ("MpEnablePus", "Reg_DWORD", "0"),
