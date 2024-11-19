@@ -35,6 +35,11 @@ privacyQolReg = {
         ("SoftLandingEnabled", "Reg_DWORD", "0"),
         ("SilentInstalledAppsEnabled", "Reg_DWORD", "0"),
         ("SystemPaneSuggestionsEnabled", "Reg_DWORD", "0"),
+        ("RotatingLockScreenOverlayEnabled", "Reg_DWORD", "0"),
+    ),
+    # Disable Show me suggestions for using my mobile device with Windows (Phone Link suggestions)
+    r"HKCU\Software\Microsoft\Windows\CurrentVersion\Mobility" : (
+        ("OptedIn", "Reg_DWORD", "0"),
     ),
     # Disable Sync Provider Notifications
     r"HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" : (
@@ -68,15 +73,23 @@ privacyQolReg = {
         # Disable Windows Chat
         ("TaskbarMn", "Reg_DWORD", "0"),
         ("TaskbarDa", "Reg_DWORD", "0"),
+        # Disable Cortona Button
+        ("ShowCortanaButton", "Reg_DWORD", "0"),
         # Disable Task View on Taskbar
         ("ShowTaskViewButton", "Reg_DWORD", "0"),
         # Set Taskbar to Align Left
         ("TaskbarAl", "Reg_DWORD", "0"),
+        # Joint Resize 
+        ("JointResize", "Reg_DWORD", "0"),
+        # Snap
+        ("SnapFill", "Reg_DWORD", "0"),
+        ("SnapAssist", "Reg_DWORD", "0"),
         # Configure Visual Effects
         ("ListviewAlphaSelect", "Reg_DWORD", "0"),
         ("IconsOnly", "Reg_DWORD", "0"),
         ("TaskbarAnimations", "Reg_DWORD", "0"),
         ("ListviewShadow", "Reg_DWORD", "0"),
+        ("TaskbarGlomLevel", "Reg_DWORD", "0"),
     ),
     # Disable Settings Sync
     r"HKLM\SOFTWARE\Policies\Microsoft\Windows\SettingSync" : (
@@ -155,6 +168,9 @@ privacyQolReg = {
         ("ShowOrHideMostUsedApps", "Reg_DWORD", "2"),
         ("HideRecentlyAddedApps", "Reg_DWORD", "1"),
         ("HideRecommendedPersonalizedSites", "Reg_DWORD", "1"),
+        # Disable Cortana in Search
+        ("AllowCortana", "Reg_DWORD", "0"),
+        ("CortanaConsent", "Reg_DWORD", "0"),
     ),
     r"HKCU\Software\Policies\Microsoft\Windows\Explorer" : (
         ("DisableNotificationCenter", "Reg_DWORD", "1"),
@@ -202,6 +218,31 @@ privacyQolReg = {
     r"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userDataTasks" : (
         ("Value", "Reg_SZ", "Deny"),
     ),
+    r"HKCU\Software\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\LooselyCoupled" : (
+        ("Value", "Reg_SZ", "Deny"),
+    ),
+    # Disable AppPrivacy
+    #r"HKLM\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy" : (
+    #    ("LetAppsAccessAccountInfo", "Reg_DWORD", "2"),
+    #    ("LetAppsAccessBackgroundSpatialPerception", "Reg_DWORD", "2"),
+    #    ("LetAppsAccessCalendar", "Reg_DWORD", "2"),
+    #    ("LetAppsAccessCallHistory", "Reg_DWORD", "2"),
+    #    ("LetAppsAccessContacts", "Reg_DWORD", "2"),
+    #    ("LetAppsAccessEmail", "Reg_DWORD", "2"),
+    #    ("LetAppsAccessGazeInput", "Reg_DWORD", "2"),
+    #    ("LetAppsAccessLocation", "Reg_DWORD", "2"),
+    #    ("LetAppsAccessMessaging", "Reg_DWORD", "2"),
+    #    ("LetAppsAccessMotion", "Reg_DWORD", "2"),
+    #    ("LetAppsAccessNotifications", "Reg_DWORD", "2"),
+    #    ("LetAppsAccessPhone", "Reg_DWORD", "2"),
+    #    ("LetAppsAccessRadios", "Reg_DWORD", "2"),
+    #    ("LetAppsAccessTasks", "Reg_DWORD", "2"),
+    #    ("LetAppsAccessTrustedDevices", "Reg_DWORD", "2"),
+    #    ("LetAppsActivateWithVoice", "Reg_DWORD", "2"),
+    #    ("LetAppsActivateWithVoiceAboveLock", "Reg_DWORD", "2"),
+    #    ("LetAppsGetDiagnosticInfo", "Reg_DWORD", "2"),
+    #    ("LetAppsSyncWithDevices", "Reg_DWORD", "2"),
+    #),
     # Configure Windows Media Player
     r"HKLM\SOFTWARE\Policies\Microsoft\WMDRM" : (
         ("DisableOnline", "Reg_DWORD", "1"),
@@ -240,7 +281,7 @@ privacyQolReg = {
     ),
     # Disable Prefetch
     r"HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" : (
-        ("EnablePrefetcher", "Reg_DWORD", "3"),
+        ("EnablePrefetcher", "Reg_DWORD", "0"),
         ("EnableSuperfetch", "Reg_DWORD", "0"),
         ("EnableBoottrace", "Reg_DWORD", "0")
     ),
@@ -352,7 +393,12 @@ privacyQolReg = {
     ),
     # Configure Search on the Taskbar
     r"HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" : (
+        ("SearchboxTaskbarMode", "Reg_DWORD", "0"),
         ("BingSearchEnabled", "Reg_DWORD", "0"),
+        ("AllowSearchToUseLocation", "Reg_DWORD", "0"),
+        ("CortanaConsent", "Reg_DWORD", "0"),
+        ("DeviceHistoryEnabled", "Reg_DWORD", "0"),
+        ("HistoryViewEnabled", "Reg_DWORD", "0"),
     ),
     r"HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\SearchSettings" : (
         ("IsAADCloudSearchEnabled", "Reg_DWORD", "0"),
@@ -377,6 +423,9 @@ privacyQolReg = {
         ("fAllowToGetHelp", "Reg_DWORD", "0"),
     ),
     # Disable Recall
+    r"HKCU\SOFTWARE\Policies\Microsoft\Windows\WindowsAI" : (
+        ("DisableAIDataAnalysis", "Reg_DWORD", "1"),
+    ),
     r"HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsAI" : (
         ("DisableAIDataAnalysis", "Reg_DWORD", "1"),
     ),
@@ -472,6 +521,11 @@ privacyQolReg = {
     r"HKLM\Software\Policies\Microsoft\Windows\DataCollection" : (
         ("AllowTelemetry", "Reg_DWORD", "0"),
         ("AllowDeviceNameInTelemetry", "Reg_DWORD", "0"),
+        ("DisableOneSettingsDownloads", "Reg_DWORD", "1"),
+        ("LimitDiagnosticLogCollection", "Reg_DWORD", "1"),
+        ("DisableTelemetryOptInChangeNotification", "Reg_DWORD", "1"),
+        ("AllowWUfBCloudProcessing", "Reg_DWORD", "0"),
+        ("AllowDesktopAnalyticsProcessing", "Reg_DWORD", "0"),
         # Disable Windows Feedback
         ("DoNotShowFeedbackNotifications", "Reg_DWORD", "1"),
     ),
@@ -590,10 +644,11 @@ privacyQolReg = {
     r"HKCU\Control Panel\Accessibility\SlateLaunch" : (
         ("LaunchAT", "Reg_DWORD", "0"),
     ),
-    # Disable Ease of Access Sounds
+    # Disable Ease of Access Sounds & Dynamic Scrollbars
     r"HKCU\Control Panel\Accessibility" : (
         ("Warning Sounds", "Reg_DWORD", "0"),
         ("Sound on Activation", "Reg_DWORD", "0"),
+        ("DynamicScrollbars", "Reg_DWORD", "0"),
     ),
     r"HKCU\Control Panel\Accessibility\SoundSentry" : (
         ("WindowsEffect", "Reg_SZ", "0"),
@@ -672,6 +727,8 @@ privacyQolReg = {
         # Hide Recent Items
         ("ShowFrequent", "Reg_DWORD", "0"),
         ("ShowRecent", "Reg_DWORD", "0"),
+        # Disable Search Box Suggestion
+        ("DisableSearchBoxSuggestions", "Reg_DWORD", "1"),
     ),
     # Enable Long Paths
     r"HKLM\SYSTEM\CurrentControlSet\Control\FileSystem" : (
@@ -692,7 +749,7 @@ privacyQolReg = {
         ("MenuShowDelay", "Reg_SZ", "0"),
         # Decrease Shutdown Time
         ("HungAppTimeout", "Reg_SZ", "1000"),
-        ("WaitToKillAppTimeOut", "Reg_SZ", "2000"),
+        ("WaitToKillAppTimeout", "Reg_SZ", "2000"),
         ("LowLevelHooksTimeout", "Reg_SZ", "1000"),
         ("WaitToKillServiceTimeout", "Reg_SZ", "1000"),
         ("ForegroundLockTimeout", "Reg_SZ", "150000"),
@@ -726,16 +783,16 @@ privacyQolReg = {
         ("DisableAutoplay", "Reg_DWORD", "1"),
     ),
     r"HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers\EventHandlersDefaultSelection\CameraAlternate" : (
-        ("MSTakeNoAction", "Reg_NONE", " "),
+        ("MSTakeNoAction", "Reg_NONE", None),
     ),
     r"HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers\EventHandlersDefaultSelection\StorageOnArrival" : (
-        ("MSTakeNoAction", "Reg_NONE", " "),
+        ("MSTakeNoAction", "Reg_NONE", None),
     ),
     r"HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers\UserChosenExecuteHandlers\CameraAlternate\ShowPicturesOnArrival" : (
-        ("MSTakeNoAction", "Reg_NONE", " "),
+        ("MSTakeNoAction", "Reg_NONE", None),
     ),
     r"HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers\UserChosenExecuteHandlers\StorageOnArrival" : (
-        ("MSTakeNoAction", "Reg_NONE", " "),
+        ("MSTakeNoAction", "Reg_NONE", None),
     ),
     # Disable Shared Experiences
     r"HKCU\Software\Microsoft\Windows\CurrentVersion\CDP\SettingsPage" : (
@@ -747,8 +804,11 @@ privacyQolReg = {
     ),
     # Set Unpinned Control Center Items
     r"HKCU\Control Panel\Quick Actions\Control Center\Unpinned" : (
-        ("Microsoft.QuickAction.Cast", "Reg_NONE", " "),
-        ("Microsoft.QuickAction.NearShare", "Reg_NONE", " "),
+        ("Microsoft.QuickAction.Cast", "Reg_NONE", None),
+        ("Microsoft.QuickAction.NearShare", "Reg_NONE", None),
+        ("Microsoft.QuickAction.ColorProfile", "Reg_NONE", None),
+        ("Microsoft.QuickAction.ProjectL2", "Reg_NONE", None),
+        
     ),
     r"HKCU\Control Panel\Quick Actions\Control Center\QuickActionsStateCapture" : (
         ("Toggles", "Reg_SZ", "Toggles,Microsoft.QuickAction.BlueLightReduction:false,Microsoft.QuickAction.Accessibility:false,Microsoft.QuickAction.ProjectL2:false"),
@@ -795,6 +855,10 @@ privacyQolReg = {
     r"HKLM\SOFTWARE\Policies\Microsoft\Dsh" : (
         ("AllowNewsAndInterests", "Reg_DWORD", "0"),
     ),
+    r"HKLM\SOFTWARE\Microsoft\PolicyManager\default\NewsAndInterests\AllowNewsAndInterests" : (
+        ("value", "Reg_DWORD", "0"),
+    ),
+    
     # Never Use Tablet Mode
     r"HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ImmersiveShell" : (
         ("SignInMode", "Reg_DWORD", "1"),
@@ -901,7 +965,7 @@ privacyQolReg = {
     # Disable Windows Feedback
     r"HKCU\SOFTWARE\Microsoft\Siuf\Rules" : (
         ("NumberOfSIUFInPeriod", "Reg_DWORD", "0"),
-        ("PeriodInNanoSeconds", "Reg_DWORD", "0"),
+        #("PeriodInNanoSeconds", "Reg_DWORD", "0"),
     ),
     r"HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanelt" : (
         ("{2cc5ca98-6485-489a-920e-b3e88a6ccce3}", "Reg_DWORD", "1"),
