@@ -16,6 +16,8 @@ performanceReg = {
     # Prioritize Foreground Applications
     r"HKLM\SYSTEM\CurrentControlSet\Control\PriorityControl" : (
         ("Win32PrioritySeparation", "Reg_DWORD", "38"),
+        ("IRQ8Priority", "Reg_DWORD", "1"),
+        ("IRQ16Priority", "Reg_DWORD", "2"),
     ),
     # Configure Automatic Maintenance
     r"HKLM\SOFTWARE\Policies\Microsoft\Windows\Task Scheduler\Maintenance" : (
@@ -24,7 +26,7 @@ performanceReg = {
     # Configure the Multimedia Class Scheduler Service
     r"HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" : (
         ("SystemResponsiveness", "Reg_DWORD", "0"),
-        ("NetworkThrottlingIndex", "Reg_DWORD", "ffffffff"),
+        ("NetworkThrottlingIndex", "Reg_DWORD", "4294967295"),
     ),
     # Disable Automatic Folder Discovery
     r"HKCU\Software\Classes\Local Settings\Software\Microsoft\Windows\Shell\Bags\AllFolders\Shell" : (
@@ -40,6 +42,8 @@ performanceReg = {
     ),
     r"HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" : (
         ("BackgroundAppGlobalToggle", "Reg_DWORD", "0"),
+        # Set Display For Performance
+        ("SearchboxTaskbarMode", "Reg_DWORD", "0"),
     ),
     # Disable Fault Tolerant Heap (FTH)
     r"HKLM\SOFTWARE\Microsoft\FTH" : (
@@ -76,17 +80,12 @@ performanceReg = {
     # Respect Power Modes Windows Search Indexing
     r"HKLM\Software\Microsoft\Windows Search\Gather\Windows\SystemIndex" : (
         ("RespectPowerModes", "Reg_DWORD", "1"),
+        # Disable Variable Refresh Rate
+        ("DirectXUserGlobalSettings", "Reg_SZ", "VRROptimizeEnable=0"),
     ),
     # Enable Hardware Accelerated GPU Scheduling (Windows 10 2004 + NVIDIA 10 Series Above + AMD 5000 and Above)
     r"HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" : (
         ("HwSchMode", "Reg_DWORD", "2"),
-    ),
-    # Disable Variable Refresh Rate
-    r"HKLM\Software\Microsoft\Windows Search\Gather\Windows\SystemIndex" : (
-        ("DirectXUserGlobalSettings", "Reg_SZ", "VRROptimizeEnable=0"),
-    ),
-    r"HKLM\Software\Microsoft\Windows Search\Gather\Windows\SystemIndex" : (
-        ("RespectPowerModes", "Reg_DWORD", "1"),
     ),
     # Disable Power Throttling
     r"HKLM\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling" : (
@@ -123,13 +122,9 @@ performanceReg = {
     # Set Display For Performance
     r"HKCU\Control Panel\Desktop" : (
         ("DragFullWindows", "Reg_SZ", "0"),
-        ("MenuShowDelay", "Reg_SZ", "200"),
     ),
     r"HKCU\Control Panel\Keyboard" : (
-        ("KeyboardDelay", "Reg_DWORD", "0"),
-    ),
-    r"HKCU\Software\Microsoft\Windows\CurrentVersion\Search" : (
-        ("SearchboxTaskbarMode", "Reg_DWORD", "0"),
+        ("KeyboardDelay", "Reg_SZ", "0"),
     ),
     # Lower Latency
     r"HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Low Latency" : (
@@ -146,42 +141,45 @@ performanceReg = {
     r"HKLM\SYSTEM\CurrentControlSet\Control\FileSystem" : (
         ("DontVerifyRandomDrivers", "Reg_DWORD", "1"),
         ("NtfsMftZoneReservation", "Reg_DWORD", "1"),
-        ("NTFSDisable8dot3NameCreation", "Reg_DWORD", "1"),
-        ("NTFSDisableLastAccessUpdate", "Reg_DWORD", "1"),
+        ("NtfsDisable8dot3NameCreation", "Reg_DWORD", "1"),
+        ("NtfsDisableLastAccessUpdate", "Reg_DWORD", "1"),
         ("ContigFileAllocSize", "Reg_DWORD", "40")
     ),
-    r"" : (
-        ("", "Reg_DWORD", "0"),
+    # Power Option Max Performance
+    r"HKLM\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\0cc5b647-c1df-4637-891a-dec35c318583" : (
+        ("ValueMax", "Reg_DWORD", "100"),
+        ("ValueMin", "Reg_DWORD", "0"),
     ),
-    r"" : (
-        ("", "Reg_DWORD", "0"),
+    r"HKLM\SYSTEM\ControlSet001\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\0cc5b647-c1df-4637-891a-dec35c318583" : (
+        ("ValueMax", "Reg_DWORD", "100"),
+        ("ValueMin", "Reg_DWORD", "0"),
     ),
-    r"" : (
-        ("", "Reg_DWORD", "0"),
+    r"HKLM\SYSTEM\ControlSet002\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\0cc5b647-c1df-4637-891a-dec35c318583" : (
+        ("ValueMax", "Reg_DWORD", "100"),
+        ("ValueMin", "Reg_DWORD", "0"),
     ),
-    r"" : (
-        ("", "Reg_DWORD", "0"),
+    r"HKLM\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\893dee8e-2bef-41e0-89c6-b55d0929964c" : (
+        ("ValueMax", "Reg_DWORD", "100"),
     ),
-    r"" : (
-        ("", "Reg_DWORD", "0"),
+    r"HKLM\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\893dee8e-2bef-41e0-89c6-b55d0929964c\DefaultPowerSchemeValues\8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c" : (
+        ("ValueMax", "Reg_DWORD", "100"),
     ),
-    r"" : (
-        ("", "Reg_DWORD", "0"),
+    r"HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers\Scheduler" : (
+        ("VsyncIdleTimeout", "Reg_DWORD", "0"),
     ),
-    r"" : (
-        ("", "Reg_DWORD", "0"),
+    r"HKLM\SOFTWARE\Intel\GMM" : (
+        ("DedicatedSegmentSize", "Reg_DWORD", "1024"),
     ),
-    r"" : (
-        ("", "Reg_DWORD", "0"),
+    r"HKLM\SYSTEM\ControlSet001\Control\PriorityControl" : (
+        ("Win32PrioritySeparation", "Reg_DWORD", "38"),
+        ("IRQ8Priority", "Reg_DWORD", "1"),
+        ("IRQ16Priority", "Reg_DWORD", "2"),
     ),
-    r"" : (
-        ("", "Reg_DWORD", "0"),
-    ),
-    r"" : (
-        ("", "Reg_DWORD", "0"),
-    ),
-    r"" : (
-        ("", "Reg_DWORD", "0"),
+    r"HKLM\System\CurrentControlSet\Services\VxD\BIOS" : (
+        ("CPUPriority", "Reg_DWORD", "1"),
+        ("FastDRAM", "Reg_DWORD", "1"),
+        ("PCIConcur", "Reg_DWORD", "1"),
+        ("AGPConcur", "Reg_DWORD", "1"),
     ),
 }
 
